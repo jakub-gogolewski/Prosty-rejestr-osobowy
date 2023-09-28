@@ -1,0 +1,14 @@
+{# templates/persons/add.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Dodaj osobę</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.surname) }}
+    {{ form_row(form.age) }}
+    {{ form_row(form.sex) }}
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+    {{ form_end(form) }}
+{% endblock %}
