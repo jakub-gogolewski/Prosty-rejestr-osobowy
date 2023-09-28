@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\GreaterThan;
 
 class PersonsType extends AbstractType
 {
@@ -24,6 +25,12 @@ class PersonsType extends AbstractType
             ])
             ->add('age', IntegerType::class, [
                 'label' => 'Wiek',
+                'constraints' => [
+                    new GreaterThan([
+                        'value' => 0,
+                        'message' => 'Wiek musi być większy od 0.',
+                    ]),
+                ],
             ])
             ->add('sex', ChoiceType::class, [
                 'label' => 'Płeć',

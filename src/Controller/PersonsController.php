@@ -9,22 +9,25 @@ use App\Form\PersonsType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Adresses;
+use App\Form\AdressType;
 
 class PersonsController extends AbstractController
 {   
-    private $entityManager;
+    private EntityManagerInterface $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/person', name: 'app_person')]
-    public function index(): JsonResponse
+    #[Route('/', name: 'homepage')]
+    public function index()
     {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/PersonController.php',
+        $persons = $this->entityManager->getRepository(Persons::class)->findAll();
+
+        return $this->render('index.html.twig', [
+            'persons' => $persons,
         ]);
     }
 

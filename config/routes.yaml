@@ -9,3 +9,7 @@ persons_add:
 persons_list:
     path: /persons/add
     controller: 'App\Controller\PersonsController::add'
+
+homepage:
+    path: /
+    controller: 'App\Controller\PersonsController::index'
