@@ -1,0 +1,16 @@
+{# templates/forms/add_address.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Dodaj adres dla {{ person.name }} {{ person.surname }}</h1>
+    {{ form_start(form) }}
+    {{ form_row(form.postal) }}
+    {{ form_row(form.city) }}
+    {{ form_row(form.street) }}
+    {{ form_row(form.street_number) }}
+    {{ form_row(form.flat_number) }}
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+    {{ form_end(form) }}
+    <a href="{{ path('persons_list') }}">Wróć</a>
+{% endblock %}

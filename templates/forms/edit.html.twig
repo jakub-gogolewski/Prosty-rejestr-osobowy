@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Edytuj osobę</h1>
+
+    <form method="post">
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+    </form>
+
+    <form method="post" action="{{ path('delete_person', {'id': person.id}) }}" onsubmit="return confirm('Czy na pewno chcesz usunąć tę osobę?');">
+        <button type="submit" class="btn btn-danger">Usuń</button>
+    </form>
+
+    <a href="{{ path('homepage') }}" class="btn btn-secondary">Powrót do listy osób</a>
+{% endblock %}

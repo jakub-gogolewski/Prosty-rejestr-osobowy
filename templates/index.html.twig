@@ -1,28 +1,54 @@
-{# templates/persons/index.html.twig #}
-
 {% extends 'base.html.twig' %}
 
 {% block body %}
     <h1>Lista osób</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Imię</th>
-                <th>Nazwisko</th>
-                <th>Wiek</th>
-                <th>Płeć</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for person in persons %}
-                <tr>
-                    <td>{{ person.name }}</td>
-                    <td>{{ person.surname }}</td>
-                    <td>{{ person.age }}</td>
-                    <td>{{ person.sex }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 
+{{ form_start(form) }}
+        <div class="form-group">
+            {{ form_widget(form.search, {'attr': {'class': 'form-control', 'style': 'float: left;'}}) }}
+            <button type="submit" class="btn btn-primary" style="float: left;">Szukaj</button>
+            <div style="clear: both;margin-bottom:20px;"></div>
+        </div>
+{{ form_end(form) }}
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Wiek</th>
+            <th>Płeć</th>
+            <th>Adresy</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for person in persons %}
+            <tr>
+                <td>{{ person.name }}</td>
+                <td>{{ person.surname }}</td>
+                <td>{{ person.age }}</td>
+                <td>{{ person.sex }}</td>
+                <td>
+                    {% if person.adress|length > 0 %}
+                        <ul>
+                            {% for address in person.adress %}
+                                <li>{{ address.street }}, {{ address.streetnumber }}{% if address.flatnumber is not empty %}/{{ address.flatnumber }}{% endif %}, {{ address.postal }} {{ address.city }} </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        Brak adresów
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ path('add_address', { 'id': person.id }) }}">Dodaj adres</a>
+                    <a href="{{ path('edit_person', { 'id': person.id }) }}">Edytuj</a>
+                    <a href="{{ path('delete_person', { 'id': person.id }) }}" onclick="return confirm('Czy na pewno chcesz usunąć tę osobę?')">Usuń</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
