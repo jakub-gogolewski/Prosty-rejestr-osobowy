@@ -9,6 +9,34 @@
     {{ form_row(form.surname) }}
     {{ form_row(form.age) }}
     {{ form_row(form.sex) }}
-    <button type="submit" class="btn btn-primary">Dodaj</button>
+    <button type="submit" class="btn btn-success" id="addPersonButton">Dodaj</button>
     {{ form_end(form) }}
+    <a href="{{ path('homepage') }}" class="btn btn-primary">Powrót do listy osób</a>
+    
+    <script>
+        document.getElementById("addPersonButton").addEventListener("click", function(event){
+            event.preventDefault();
+            if (document.forms[0].checkValidity()) {  // Sprawdzanie walidacji formularza
+                let choice = confirm("Czy chcesz dodać tej osobie teraz adres?");
+                let inputDecisionMade = document.createElement('input');
+                inputDecisionMade.type = 'hidden';
+                inputDecisionMade.name = 'add_address_decision_made';
+                inputDecisionMade.value = '1';
+                document.forms[0].appendChild(inputDecisionMade);
+
+                if (choice) {
+                    let input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'add_address';
+                    input.value = '1';
+                    document.forms[0].appendChild(input);
+                }
+                document.forms[0].submit();
+            } else {
+                document.forms[0].reportValidity();  // Pokazuje komunikaty o błędach walidacji
+            }
+        });
+    </script>
+
+
 {% endblock %}

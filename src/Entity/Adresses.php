@@ -28,7 +28,7 @@ class Adresses
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $flat_number = null;
 
-    #[ORM\ManyToOne(inversedBy: 'Adress')]
+    #[ORM\ManyToOne(inversedBy: 'Adresses')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Persons $persons_key = null;
 

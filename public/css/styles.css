@@ -1,11 +1,13 @@
 /* public/css/styles.css */
 
-body{
-
+body {
     background-color: #111123;
     color: #FFFDFA;
-
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    margin:0;
 }
+
 
 /* Styl dla tabelki */
 table {
@@ -15,7 +17,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
 }
 
 th, td {
@@ -24,12 +26,32 @@ th, td {
 }
 
 th {
-    background-color: gray;
+    background-color: #33333d;
+    color: cyan;
+}
+
+tr:nth-child(even) {
+    background-color: #33333d;
+}
+
+/* Styl dla listy adresów */
+td ul {
+    list-style-type: "🌃";
+    padding: 0; 
+    padding-left: 25px;
+    margin: 0; 
+}
+
+td ul li {
+    padding: 5px 10px; 
+    border-radius: 5px; 
+    margin-bottom: 5px; 
+    min-width: 200px; 
 }
 
 /* Styl dla nagłówka strony */
 h1 {
-    font-size: 24px;
+    font-size: 50px;
     color: cyan;
     margin-bottom: 20px;
 }
@@ -42,8 +64,155 @@ a {
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
+    margin-top: 10px;
 }
 
 a:hover {
     background-color: #0056b3;
+    color:#fff;
+}
+
+
+form input[type="text"],
+form input[type="number"],
+form select {
+    width: 500px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    margin-bottom: 5px; 
+    transition: border-color 0.3s;  
+}
+
+
+form input[type="text"]:hover,
+form input[type="number"]:hover,
+form select:hover,
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form select:focus {
+    border-color: #007bff;  
+}
+
+
+form button {
+    padding: 10px 20px;  
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; 
+}
+
+
+form button:hover {
+    background-color: #0056b3;  
+}
+
+form label {
+    display: block;  
+    margin-bottom: 5px;  
+}
+
+
+
+form ul {
+    list-style-type: none;  
+    padding-left: 0;  
+    color: red;  
+    margin-bottom: 10px;  
+    font-size: 0.9em; 
+}
+
+form div {
+    margin-bottom: 10px; 
+}
+
+
+.flash-messages {
+    margin: 20px 0;
+}
+
+.alert {
+    box-sizing: border-box;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: #4CAF50; 
+    color: white;
+}
+
+a:not(:last-child) {
+    margin-right: 10px;
+}
+
+/* Styl dla przycisku dropdown */
+.btn.btn-primary.dropdown-toggle {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn.btn-primary.dropdown-toggle:hover {
+    background-color: #0056b3;
+}
+
+/* Styl dla elementów menu rozwijanego */
+.dropdown-menu {
+    background-color: #111123;
+    border: 3px solid white; 
+}
+
+.dropdown-item {
+    color: #FFFDFA;
+    transition: background-color 0.3s;
+}
+
+.dropdown-item:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+
+
+.dropdown-danger .dropdown-item {
+    color: #FFFDFA; 
+    transition: background-color 0.3s;
+}
+
+.dropdown-danger .dropdown-item:hover {
+    background-color: #b21f2d; 
+    color: #fff;
+}
+
+a, .btn {
+    vertical-align: middle; 
+}
+
+.btn.btn-primary.custom-dropdown-toggle,.btn.btn-danger.custom-dropdown-toggle {
+    margin-right: 10px;
+    margin-bottom: -10px;
+}
+
+.custom-dropdown-toggle::after{
+    display: inline-block;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+
 }

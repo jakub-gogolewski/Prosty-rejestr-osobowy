@@ -28,7 +28,7 @@ class Persons
     #[ORM\Column(length: 50)]
     private ?string $sex = null;
 
-    #[ORM\OneToMany(mappedBy: 'persons_key', targetEntity: Adresses::class)]
+    #[ORM\OneToMany(mappedBy: 'persons_key', targetEntity: Adresses::class,cascade:["remove"])]
     private Collection $Adress;
 
     public function __construct()

@@ -46,3 +46,9 @@ when@prod:
                     adapter: cache.app
                 doctrine.system_cache_pool:
                     adapter: cache.system
+
+    orm:
+        dql:
+            string_functions:
+                search: DoctrineExtensions\Query\Mysql\SearchFunction
+
