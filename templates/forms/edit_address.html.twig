@@ -5,18 +5,6 @@
 
     {{ form_start(form) }}
     <div class="form-group">
-        {{ form_label(form.postal, 'Kod pocztowy') }}
-        {{ form_widget(form.postal, {'attr': {'class': 'form-control'}}) }}
-        {{ form_errors(form.postal) }}
-    </div>
-    
-    <div class="form-group">
-        {{ form_label(form.city, 'Miasto') }}
-        {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
-        {{ form_errors(form.city) }}
-    </div>
-
-    <div class="form-group">
         {{ form_label(form.street, 'Ulica') }}
         {{ form_widget(form.street, {'attr': {'class': 'form-control'}}) }}
         {{ form_errors(form.street) }}
@@ -35,6 +23,18 @@
     </div>
 
     <div class="form-group">
+        {{ form_label(form.postal, 'Kod pocztowy') }}
+        {{ form_widget(form.postal, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.postal) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.city, 'Miasto') }}
+        {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.city) }}
+    </div>
+
+    <div class="form-group">
         <button type="submit" class="btn btn-success">Zapisz zmiany</button>
     </div>
 
@@ -44,4 +44,11 @@
          <a href="{{ path('homepage') }}" class="btn btn-primary">Powrót do listy osób</a>
         <a href="{{ path('delete_address', {'addressId': address.id}) }}" class="btn btn-danger" onclick="return confirm('Czy na pewno chcesz usunąć ten adres?')">Usuń adres</a>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const postalInput = document.querySelector('#adress_postal');
+            Inputmask({"mask": "99-999", "placeholder": "__-___",}).mask(postalInput);
+        });
+    </script>
 {% endblock %}

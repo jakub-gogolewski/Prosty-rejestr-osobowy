@@ -1,42 +1,5 @@
 controllers:
-    resource: '../src/Controller/'
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
     type: attribute
-
-persons_add:
-    path: /persons/add
-    controller: 'App\Controller\PersonsController::add'
-
-homepage:
-    path: /
-    controller: 'App\Controller\PersonsController::index'
-
-add_address:
-    path: /add-address/{id}
-    controller: App\Controller\PersonsController::addAddress
-
-
-edit_person:
-    path: '/edit-person/{id}'
-    controller: 'App\Controller\PersonsController::editPerson'
-    methods: ['GET', 'POST']
-    requirements:
-        id: '\d+'
-
-delete_person:
-    path: '/delete-person/{id}'
-    controller: 'App\Controller\PersonsController::deletePerson'
-    methods: ['GET', 'POST']
-    requirements:
-        id: '\d+'
-
-edit_address:
-    path: '/edit-address/{personId}/{addressId}'
-    controller: 'App\Controller\PersonsController::edit'
-    methods: ['GET', 'POST']
-    
-
-delete_address:
-    path: /delete-address/{addressId}
-    controller: App\Controller\PersonsController::deleteAddress
-    methods: [GET, 'POST']
-

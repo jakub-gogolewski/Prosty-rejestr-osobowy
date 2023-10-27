@@ -10,8 +10,17 @@
     {{ form_row(form.flat_number) }}
     {{ form_row(form.postal) }}
     {{ form_row(form.city) }}
-    <button type="submit" class="btn btn-success"">Dodaj</button>
+    <button type="submit" class="btn btn-success">Dodaj</button>
     {{ form_end(form) }}
     <a href="{{ path('homepage') }}" class="btn btn-primary">Powrót do listy osób</a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const postalInput = document.querySelector('#adress_postal');
+            Inputmask({"mask": "99-999", "placeholder": "__-___",}).mask(postalInput);
+        });
+    </script>
+    
     
 {% endblock %}
+

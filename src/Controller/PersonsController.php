@@ -78,7 +78,7 @@ class PersonsController extends AbstractController
             throw $this->createNotFoundException('Osoba o podanym ID nie istnieje.');
         }
 
-        $adress = new Adresses(); // Tworzymy nowy obiekt Adresses
+        $adress = new Adresses();
 
         // Automatycznie przypisz osobę na podstawie kontekstu
         $adress->setPersonsKey($person);
@@ -194,7 +194,7 @@ public function deleteAddress(int $addressId, EntityManagerInterface $entityMana
 
         $this->addFlash('success', 'Adres został usunięty pomyślnie!');
 
-        return $this->redirectToRoute('homepage'); // lub inna nazwa trasy, na którą chcesz przekierować użytkownika po usunięciu
+        return $this->redirectToRoute('homepage'); //Przekieruj na stronę główną
     }
 
 }

@@ -14,7 +14,7 @@ class SearchType extends AbstractType
         $builder
             ->add('search', TextType::class, [
                 'label' => 'Szukaj',
-                'required' => false, // Pole jest opcjonalne
+                'required' => false, // wyszukiwanie jest opcjonalne
             ]);
     }
 

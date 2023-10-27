@@ -14,28 +14,38 @@
     <a href="{{ path('homepage') }}" class="btn btn-primary">Powrót do listy osób</a>
     
     <script>
-        document.getElementById("addPersonButton").addEventListener("click", function(event){
+    
+                document.getElementById("addPersonButton").addEventListener("click", function(event){
             event.preventDefault();
             if (document.forms[0].checkValidity()) {  // Sprawdzanie walidacji formularza
                 let choice = confirm("Czy chcesz dodać tej osobie teraz adres?");
-                let inputDecisionMade = document.createElement('input');
-                inputDecisionMade.type = 'hidden';
-                inputDecisionMade.name = 'add_address_decision_made';
-                inputDecisionMade.value = '1';
-                document.forms[0].appendChild(inputDecisionMade);
 
-                if (choice) {
-                    let input = document.createElement('input');
+                // Sprawdzanie, czy pole decyzji już istnieje
+                let inputDecisionMade = document.querySelector('input[name="add_address_decision_made"]');
+                if (!inputDecisionMade) {
+                    inputDecisionMade = document.createElement('input');
+                    inputDecisionMade.type = 'hidden';
+                    inputDecisionMade.name = 'add_address_decision_made';
+                    document.forms[0].appendChild(inputDecisionMade);
+                }
+                inputDecisionMade.value = '1';
+
+                // Sprawdzanie, czy pole adresu już istnieje
+                let input = document.querySelector('input[name="add_address"]');
+                if (!input) {
+                    input = document.createElement('input');
                     input.type = 'hidden';
                     input.name = 'add_address';
-                    input.value = '1';
                     document.forms[0].appendChild(input);
                 }
+                input.value = choice ? '1' : '0';
+
                 document.forms[0].submit();
             } else {
                 document.forms[0].reportValidity();  // Pokazuje komunikaty o błędach walidacji
             }
         });
+
     </script>
 
 
